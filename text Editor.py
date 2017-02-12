@@ -5,6 +5,10 @@ root= Tk()
 root.title("Notepad By Rishabh")
 root.geometry("400x400")
 
+def about():
+    str="this is a test editor made by Rishabh"
+    T.insert(END,str)
+
 def save():
     file= open("file","w")
     file.write(T.get("1.0",END))
@@ -24,13 +28,13 @@ menubar.add_cascade(label="File", menu=filemenu)
 
 # create more pulldown menus
 editmenu = Menu(menubar, tearoff=0)
-editmenu.add_command(label="Cut", command=doNothing())
-editmenu.add_command(label="Copy", command=doNothing())
-editmenu.add_command(label="Paste", command=doNothing())
+editmenu.add_command(label="Cut")
+editmenu.add_command(label="Copy")
+editmenu.add_command(label="Paste")
 menubar.add_cascade(label="Edit", menu=editmenu)
 
 helpmenu = Menu(menubar, tearoff=0)
-helpmenu.add_command(label="About", command=doNothing())
+helpmenu.add_command(label="About",command=about)
 menubar.add_cascade(label="Help", menu=helpmenu)
 
 # display the menu
