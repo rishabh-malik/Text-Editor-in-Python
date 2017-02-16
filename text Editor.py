@@ -1,4 +1,5 @@
 from tkinter import *
+import pyautogui as pg
 def doNothing():
     print("Ok")
 root= Tk()
@@ -9,10 +10,20 @@ def about():
     str="this is a test editor made by Rishabh"
     T.insert(END,str)
 
+def cut():
+    pg.hotkey('ctrl','x')
+
+def paste():
+    pg.hotkey('ctrl', 'v')
+
+def copy():
+    pg.hotkey('ctrl', 'c')
+
 def save():
     file= open("file","w")
     file.write(T.get("1.0",END))
     file.close()
+
 
 def new():
     T.delete(0.0,20.0)
@@ -28,9 +39,9 @@ menubar.add_cascade(label="File", menu=filemenu)
 
 # create more pulldown menus
 editmenu = Menu(menubar, tearoff=0)
-editmenu.add_command(label="Cut")
-editmenu.add_command(label="Copy")
-editmenu.add_command(label="Paste")
+editmenu.add_command(label="Cut",command=cut)
+editmenu.add_command(label="Copy",command=copy)
+editmenu.add_command(label="Paste",command=paste)
 menubar.add_cascade(label="Edit", menu=editmenu)
 
 helpmenu = Menu(menubar, tearoff=0)
